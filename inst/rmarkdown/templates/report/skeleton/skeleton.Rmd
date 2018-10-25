@@ -1,0 +1,44 @@
+---
+title: "[Title]"
+
+subtitle: "[subtitle]"
+
+statistician: "[Statistician]"
+
+collaborator: "[Collaborator1, Collaborator2]"
+
+datasource: "[Data sources]"
+
+output: reportr::report
+
+abstract: "[Abstract]"
+
+date: "`r Sys.time()`"
+
+git-commit-hash: "`r system('git rev-parse --verify HEAD', intern=TRUE)`"
+
+git-wd-clean: "`r ifelse(system('git diff-index --quiet HEAD') == 0, 'clean', 'file changes, working directory not clean!')`"
+
+params: 
+    test : "test"
+---
+
+
+
+```{r setup-chunk}
+options(tidyverse.quiet = TRUE) # supresses filter/lag conflicts
+require(tidyverse, quietly = TRUE)
+```
+
+
+
+# [Section 1]
+
+
+
+
+# R Session Info
+
+```{r r-session-info}
+sessionInfo()
+``` 
