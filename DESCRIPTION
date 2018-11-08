@@ -4,6 +4,14 @@ Title: RMarkdown templates for statistical report
 Version: 0.1.0
 Author: Kevin Kunzmann
 Maintainer: Kevin Kunzmann <kevin.kunzmann@mrc-bsu.cam.ac.uk>
-Description: Templates for generating statistical reports or presentations via LaTeX (and beamer)
-License: MIT
+Description: Templates for generating statistical reports or presentations via 
+    LaTeX (and beamer). Optimized for wide output to maximize space for graphics.
+    Nicely works with git as well.
+License: MIT + file LICENSE
 LazyData: TRUE
+Suggests: 
+    knitr
+Imports: rmarkdown
+VignetteBuilder: knitr
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.1

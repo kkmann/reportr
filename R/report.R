@@ -1,3 +1,8 @@
+#' PDF report template for RMarkdown
+#'
+#' @param ... further arguments pssed to rmarkdown::pdf_document()
+#'
+#' @export
 report <- function(...) {
 
     base <- rmarkdown::pdf_document(
