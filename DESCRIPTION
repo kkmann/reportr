@@ -10,7 +10,9 @@ Description: Templates for generating statistical reports or presentations via
 License: MIT + file LICENSE
 LazyData: TRUE
 Suggests: 
-    knitr
+    knitr,
+    testthat,
+    covr
 Imports: rmarkdown
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
