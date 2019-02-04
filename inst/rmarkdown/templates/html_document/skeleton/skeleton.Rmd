@@ -1,0 +1,31 @@
+---
+title: "Untitled"
+date: "`r Sys.time()`"
+output: reportr::html_report
+---
+
+
+
+```{r setup-chunk, echo=FALSE}
+options(tidyverse.quiet = TRUE)
+require(tidyverse, quietly = TRUE)
+reportr::print_meta(
+    Statistician = 'me <myfault@noidea.com>',
+    Collaborator = 'you <yourfault@nohelp.com>',
+    `Data Source` = 'unknown'
+)
+```
+
+
+
+
+
+## Background
+
+
+
+## R Session Info
+
+```{r r-session-info, echo=FALSE}
+sessionInfo()
+``` 
