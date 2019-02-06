@@ -4,10 +4,18 @@
 \alias{print_meta}
 \title{HTML report template for Rmarkdown}
 \usage{
-print_meta(Statistician = "me <myfault@nohelp.com>",
-  Collaborator = "you <yourfault@nohelp.com>", ...)
+print_meta(`git-commit` = if (!system("git status", ignore.stdout = TRUE,
+  ignore.stderr = TRUE)) {     sprintf("sha1:\%s",
+  system("git rev-parse --verify HEAD", intern = TRUE)) } else {     NULL
+  }, `git-clean-WD` = if (!system("git status", ignore.stdout = TRUE,
+  ignore.stderr = TRUE)) {     ifelse(system("git diff-index --quiet HEAD")
+  == 0, "yes", "no") } else {     NULL }, ...)
 }
 \arguments{
+\item{git-commit}{current working dir commit hash}
+
+\item{git-clean-WD}{is the working directory clean?}
+
 \item{...}{further arguments pssed to rmarkdown::html_document()}
 }
 \description{

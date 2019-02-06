@@ -56,15 +56,20 @@ html_report <- function(...) {
 #' HTML report template for Rmarkdown
 #'
 #' @param ... further arguments pssed to rmarkdown::html_document()
+#' @param git-commit current working dir commit hash
+#' @param git-clean-WD is the working directory clean?
 #'
+#' @importFrom magrittr %>%
+#' @import dplyr
+#' @import kableExtra
 #' @export
 print_meta <- function(
-    `git commit` = if (!system('git status', ignore.stdout = TRUE, ignore.stderr = TRUE)) {
+    `git-commit` = if (!system('git status', ignore.stdout = TRUE, ignore.stderr = TRUE)) {
             sprintf("sha1:%s", system('git rev-parse --verify HEAD', intern = TRUE))
         } else {
             NULL
         },
-    `git clean WD` = if (!system('git status', ignore.stdout = TRUE, ignore.stderr = TRUE)) {
+    `git-clean-WD` = if (!system('git status', ignore.stdout = TRUE, ignore.stderr = TRUE)) {
             ifelse(system('git diff-index --quiet HEAD') == 0, 'yes', 'no')
         } else {
             NULL
@@ -73,13 +78,14 @@ print_meta <- function(
 ) {
 
     args <- c(as.list(environment()), list(...))
-
     args <- args[!sapply(args, is.null)]
 
-    tibble(
-        kableExtra::cell_spec(names(args), align = "c", color = "black"),
-        kableExtra::cell_spec(as.character(args))
-    ) %>%
+    . <- NULL # appease R CMD check
+
+    dplyr::tibble(
+            kableExtra::cell_spec(names(args), align = "c", color = "black"),
+            kableExtra::cell_spec(as.character(args))
+        ) %>%
         kableExtra::kable(escape = FALSE, col.names = rep("", ncol(.))) %>%
         kableExtra::kable_styling("striped", full_width = F) %>%
         kableExtra::column_spec(1, bold = TRUE) %>%

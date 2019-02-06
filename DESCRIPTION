@@ -1,7 +1,7 @@
 Package: reportr
 Type: Package
 Title: RMarkdown templates for statistical report
-Version: 0.1.0
+Version: 0.2.0
 Author: Kevin Kunzmann
 Maintainer: Kevin Kunzmann <kevin.kunzmann@mrc-bsu.cam.ac.uk>
 Description: Templates for generating statistical reports or presentations via 
@@ -13,7 +13,11 @@ Suggests:
     knitr,
     testthat,
     covr
-Imports: rmarkdown
+Imports: 
+    rmarkdown,
+    kableExtra,
+    magrittr,
+    dplyr
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
